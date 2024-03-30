@@ -37,8 +37,8 @@ const DoctorList = ({ doctors }) => {
                 </div>
               </div>
             ))
-          : [1, 2, 3, 4].map(() => (
-              <div className="bg-slate-200 h-[390px] w-auto rounded-lg animate-pulse flex flex-col items-center justify-center mx-8"></div>
+          : [1, 2, 3, 4].map((item,index) => (
+              <div className="bg-slate-200 h-[390px] w-auto rounded-lg animate-pulse flex flex-col items-center justify-center mx-8" key={index}></div>
             ))}
       </section>
     </div>
