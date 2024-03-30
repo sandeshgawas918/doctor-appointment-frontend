@@ -1,25 +1,36 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import ProductList from "./_components/ProductList"
+import Hero from "./_components/Hero"
+import CategoryList from "./_components/CategoryList"
 import GlobalAPI from "./utility/GlobalAPI"
+import DoctorList from "./_components/DoctorList"
 
 const page = () => {
-const [product, setproduct] = useState()
+const [categories, setcategories] = useState([])
+const [doctors, setdoctors] = useState([])
 
 useEffect(()=>{
-  getProducts()
+  getCategories()
+  getDoctors()
 },[])
 
-const getProducts=()=>{
-  GlobalAPI.getProducts().then((res)=>{
-    console.log(res.data.data);
-    setproduct(res.data.data);
+const getDoctors=()=>{
+  GlobalAPI.getDoctors().then((res)=>{
+    setdoctors(res.data.data);
+  })
+}
+
+const getCategories=()=>{
+  GlobalAPI.getCategories().then((res)=>{
+    setcategories(res.data.data);
   })
 }
   return (
     <div>
-      {product && <ProductList product={product}/>}
+      <Hero/>
+      {categories && <CategoryList categories={categories}/>}
+      {doctors && <DoctorList doctors={doctors}/>}
     </div>
   )
 }
