@@ -17,12 +17,14 @@ useEffect(()=>{
 
 const getDoctors=()=>{
   GlobalAPI.getDoctors().then((res)=>{
+    console.log(res.data.data);
     setdoctors(res.data.data);
   })
 }
 
 const getCategories=()=>{
   GlobalAPI.getCategories().then((res)=>{
+    console.log(res.data.data);
     setcategories(res.data.data);
   })
 }
