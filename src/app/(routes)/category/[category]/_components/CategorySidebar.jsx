@@ -40,7 +40,7 @@ const CategorySidebar = () => {
           <CommandGroup heading="Suggestions">
             {categories.map((category, index) => (
               <Link
-                href={`/${category.attributes.Name}`}
+                href={`/category/${category.attributes.Name}`}
                 className=""
                 key={index}
               >

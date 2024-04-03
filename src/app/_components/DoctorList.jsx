@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const DoctorList = ({ doctors }) => {
   return (
@@ -31,8 +32,10 @@ const DoctorList = ({ doctors }) => {
                     {doc.attributes.Address} years
                   </p>
 
-                  <div className=" w-full outline-1 outline-primary border border-primary rounded-full p-2 text-center mt-3 text-primary">
+                  <div className=" w-full outline-1 outline-primary border border-primary rounded-full p-2 text-center mt-3 text-primary cursor-pointer">
+                  <Link href={`/details/${doc.id}`} >
                     Book Now
+                  </Link>
                   </div>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const CategoryList = ({ categories }) => {
 
       <section className=" grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
         {categories.length>0?categories.map((category, index) => (
-          <Link href={`/${category.attributes.Name}`} key={index} className=" flex flex-col gap-2 items-center justify-center bg-blue-50 p-5 m-5 rounded-lg">
+          <Link href={`/category/${category.attributes.Name}`} key={index} className=" flex flex-col gap-2 items-center justify-center bg-blue-50 p-5 m-5 rounded-lg">
             <Image
               src={category.attributes.Icon.data.attributes.url}
               width={40}  

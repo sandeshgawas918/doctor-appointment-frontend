@@ -1,4 +1,5 @@
-import CategorySidebar from "./[category]/_components/CategorySidebar"
+import CategorySidebar from "./_components/CategorySidebar"
+
 
 const layout = ({children}) => {
   return (
