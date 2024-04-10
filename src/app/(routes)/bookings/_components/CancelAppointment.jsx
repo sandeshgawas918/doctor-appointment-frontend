@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
+
 const CancelAppointment = ({id,canceling}) => {
 
   return (
@@ -20,7 +21,7 @@ const CancelAppointment = ({id,canceling}) => {
         <AlertDialogTrigger><Button>Cancel Appointment</Button></AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure? {id}</AlertDialogTitle>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.

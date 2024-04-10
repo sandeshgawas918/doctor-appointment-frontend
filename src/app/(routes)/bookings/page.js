@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GlobalAPI from '@/app/utility/GlobalAPI'
 import BookingList from './_components/BookingList'
 import { Button } from '@/components/ui/button'
+import { toast } from "sonner"
 
 
 const BookingPage = () => {
@@ -12,7 +13,7 @@ const BookingPage = () => {
 
     const canceling=(id)=>{
         GlobalAPI.deleteAppointment(id).then((res)=>{
-            console.log(res);
+            toast('Appointment has been cancelled successfully...')
         })   
     }
 

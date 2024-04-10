@@ -1,7 +1,23 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import {LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 
 const Header = () => {
   const NavLink = [
@@ -25,17 +41,18 @@ const Header = () => {
       name: "Categories",
       link: "/",
     },
-    {
-      id: 5,
-      name: "MY BOOKINGS",
-      link: "bookings",
-    },
   ];
+
+  const { user } = useKindeBrowserClient();
   return (
     <div>
+      <pre>{JSON.stringify(user)}</pre>
       <nav className=" flex w-full flex-row justify-between items-center gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer">
         <div className=" flex items-center gap-9">
-         <Link href='/'> <Image src="/logo.svg" width={190} height={50} alt="logo" /></Link>
+          <Link href="/">
+            {" "}
+            <Image src="/logo.svg" width={190} height={50} alt="logo" />
+          </Link>
           <div className=" flex flex-row gap-7 ">
             {NavLink.map((item, index) => (
               <Link href={`/${item.link}`}>
@@ -47,7 +64,29 @@ const Header = () => {
           </div>
         </div>
         <div className=" flex float-end">
-          <Button>Get Started</Button>
+          {user ? (
+            <div>
+              <DropdownMenu>
+                <DropdownMenuTrigger><Image
+                className=" rounded-full"
+                src={user.picture}
+                height={50}
+                width={50}
+                alt="pic"
+              /></DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem><Link href='/bookings' >My Bookings</Link></DropdownMenuItem>
+                  <DropdownMenuItem><LogoutLink>Log out</LogoutLink></DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          ) : (
+            <LoginLink>
+              <Button>Get Started</Button>
+            </LoginLink>
+          )}
         </div>
       </nav>
     </div>

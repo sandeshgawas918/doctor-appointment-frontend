@@ -9,14 +9,18 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
+import { toast } from "sonner"
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import GlobalAPI from "@/app/utility/GlobalAPI";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 const BookAppointment = ({ doctor }) => {
   const [date, setDate] = useState(new Date());
   const [timeSlot, settimeSlot] = useState();
   const [time, settime] = useState();
+
+  const { user } = useKindeBrowserClient();
 
   useEffect(() => {
     getTime();
@@ -54,8 +58,8 @@ const BookAppointment = ({ doctor }) => {
   const saveBooking = () => {
     const data = {
       data: {
-        "UserName": "sandesh",
-        "Email": "sandesh@gmail.com",
+        "UserName": user.given_name  + " " + user.family_name,
+        "Email": user.email,
         "Date": date,
         "Time": time,
         "doctor": doctor.id,
@@ -65,7 +69,7 @@ const BookAppointment = ({ doctor }) => {
 
 
     GlobalAPI.bookAppointment(data).then((res) => {
-      console.log(res);
+      toast("Appointment successfully created")
     });
   };
 
