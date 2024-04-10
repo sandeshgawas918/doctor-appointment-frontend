@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import BookAppointment from "./BookAppointment";
 
 const DoctorDetails = () => {
   const socialMediaList = [
@@ -94,7 +95,7 @@ const DoctorDetails = () => {
                 ))}
               </h1>
               <h1 className=" mt-3">
-                <Button>Book Appointment</Button>
+                <BookAppointment doctor={doctor}/> 
               </h1>
             </div>
           </div>

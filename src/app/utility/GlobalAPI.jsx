@@ -15,16 +15,40 @@ const getCategories = () => {
   return axiosClient.get("/categories?populate=*");
 };
 
-const getDoctors=()=>{
-  return axiosClient.get('/doctors?populate=*')
-}
+const getDoctors = () => {
+  return axiosClient.get("/doctors?populate=*");
+};
 
-const getDoctorbyCategory=(category)=>{
-  return axiosClient.get(`/doctors?filters[categories][Name][$in]=${category}&populate=*`)
-}
+const getDoctorbyCategory = (category) => {
+  return axiosClient.get(
+    `/doctors?filters[categories][Name][$in]=${category}&populate=*`
+  );
+};
 
-const getDoctorbyId=(id)=>{
-  return axiosClient.get(`/doctors/${id}?populate=*`)
-}
+const getDoctorbyId = (id) => {
+  return axiosClient.get(`/doctors/${id}?populate=*`);
+};
 
-export default { getCategories, getDoctors, getDoctorbyCategory,getDoctorbyId };
+const bookAppointment = (data) => {
+  return axiosClient.post("/appointments", data);
+};
+
+const getAppointments = () => {
+  return axiosClient.get(
+    "/appointments?populate[doctor][populate][Image][populate][0]=url&populate=*"
+  );
+};
+
+const deleteAppointment = (id) => {
+  return axiosClient.delete(`/appointments/${id}`);
+};
+
+export default {
+  getCategories,
+  getDoctors,
+  getDoctorbyCategory,
+  getDoctorbyId,
+  bookAppointment,
+  getAppointments,
+  deleteAppointment,
+};
