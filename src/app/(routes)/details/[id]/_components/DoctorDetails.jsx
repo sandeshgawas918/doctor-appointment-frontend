@@ -55,18 +55,19 @@ const DoctorDetails = () => {
 
   return (
     <div>
-      <section>
-        <h1 className=" text-2xl font-bold">Doctor Details</h1>
+      <section className=" overflow-x-hidden">
 
         {doctor && (
-          <div className=" flex flex-row p-5 m-5 border rounded-md shadow-sm">
-            <Image
-              src={doctor?.attributes?.Image.data.attributes.url}
-              width={200}
-              height={200}
-              alt="img"
-              className="w-[230px] object-cover h-[250px] rounded"
-            />
+          <div className=" flex sm:flex-row flex-col  p-5 m-5 border rounded-md shadow-sm">
+            <div>
+              <Image
+                src={doctor?.attributes?.Image.data.attributes.url}
+                width={200}
+                height={200}
+                alt="img"
+                className="sm:w-[230px] w-[300px] h-[170px] object-cover sm:h-[250px] rounded"
+              />
+            </div>
             <div className=" mx-3">
               <h1 className=" text-2xl font-semibold">
                 {doctor?.attributes?.Name}
@@ -95,7 +96,7 @@ const DoctorDetails = () => {
                 ))}
               </h1>
               <h1 className=" mt-3">
-                <BookAppointment doctor={doctor}/> 
+                <BookAppointment doctor={doctor} />
               </h1>
             </div>
           </div>

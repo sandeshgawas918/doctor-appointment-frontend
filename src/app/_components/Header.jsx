@@ -46,10 +46,9 @@ const Header = () => {
   const { user } = useKindeBrowserClient();
   return (
     <div>
-      <pre>{JSON.stringify(user)}</pre>
-      <nav className=" flex w-full flex-row justify-between items-center gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer">
+      <nav className=" flex w-full flex-row justify-between items-center sm:gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer">
         <div className=" flex items-center gap-9">
-          <Link href="/">
+          <Link href="/" className=" w-[100px]">
             {" "}
             <Image src="/logo.svg" width={190} height={50} alt="logo" />
           </Link>
@@ -84,7 +83,7 @@ const Header = () => {
             </div>
           ) : (
             <LoginLink>
-              <Button>Get Started</Button>
+              <Button className=' text-[9px] sm:text-sm'>Get Started</Button>
             </LoginLink>
           )}
         </div>

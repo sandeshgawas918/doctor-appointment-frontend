@@ -4,14 +4,14 @@ import Link from "next/link";
 const CategoryList = ({ categories }) => {
   return (
     <div className=" text-center flex gap-3 flex-col items-center justify-center">
-      <h1 className=" text-center text-4xl font-bold">
+      <h1 className=" text-center sm:text-4xl font-bold text-2xl">
         Search Doctor by Category
       </h1>
-      <p className="text-center text-2xl">
+      <p className="text-center sm:text-2xl">
         Search Doctor and Book appointment in one click
       </p>
 
-      <section className=" grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
+      <section className=" grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-4">
         {categories.length>0?categories.map((category, index) => (
           <Link href={`/category/${category.attributes.Name}`} key={index} className=" flex flex-col gap-2 items-center justify-center bg-blue-50 p-5 m-5 rounded-lg">
             <Image
