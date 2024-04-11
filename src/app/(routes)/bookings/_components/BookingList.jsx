@@ -1,20 +1,36 @@
-import { CalendarCheck, MapPin, TimerIcon } from 'lucide-react'
-import moment from 'moment'
-import Image from 'next/image'
-import React, { useEffect } from 'react'
-import CancelAppointment from './CancelAppointment'
+import { CalendarCheck, MapPin, TimerIcon } from "lucide-react";
+import moment from "moment";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import CancelAppointment from "./CancelAppointment";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
-const appointment = ({appointment,expired,canceling}) => {
+const appointment = ({ appointment, expired, canceling }) => {
+  const { user } = useKindeBrowserClient();
+  const [userBookingList, setuserBookingList] = useState([]);
+
+ useEffect(() => {
+    filterBooking()
+  }, [appointment,user]);
+
+  const filterBooking = () => {
+    let result = appointment?.filter((item) => {
+      return item.attributes.Email == user?.email;
+    });
+    setuserBookingList(result);
+  };
+
   return (
     <div>
-      {appointment &&
-        appointment.map((item, index) => (
+      {userBookingList &&
+        userBookingList.map((item, index) => (
           <div key={index} className="p-3 border my-4 rounded-lg">
             <div className=" flex flex-row gap-4 items-center">
               <div>
                 <Image
                   src={
-                    item?.attributes?.doctor?.data?.attributes?.Image?.data?.attributes?.url
+                    item?.attributes?.doctor?.data?.attributes?.Image?.data
+                      ?.attributes?.url
                   }
                   width={500}
                   height={500}
@@ -25,7 +41,9 @@ const appointment = ({appointment,expired,canceling}) => {
               <div className="w-full flex flex-col">
                 <h2 className=" text-[13px] sm:text-xl font-bold flex flex-row justify-between items-center">
                   <h2>{item?.attributes?.doctor?.data?.attributes?.Name}</h2>
-                  {!expired && <CancelAppointment id={item?.id} canceling={canceling} /> }
+                  {!expired && (
+                    <CancelAppointment id={item?.id} canceling={canceling} />
+                  )}
                 </h2>
                 <h2 className="text-[12px] sm:text-xl text-gray-500 flex flex-row gap-2 mt-1">
                   <MapPin className=" text-purple-700" />
@@ -33,7 +51,8 @@ const appointment = ({appointment,expired,canceling}) => {
                 </h2>
                 <h2 className="text-[12px] sm:text-xl font-semibold flex flex-row gap-2 mt-3">
                   <CalendarCheck className=" text-purple-700" />
-                  Appointment Date : {moment(item?.attributes?.Date).format('DD-MMM-YYYY')}
+                  Appointment Date :{" "}
+                  {moment(item?.attributes?.Date).format("DD-MMM-YYYY")}
                 </h2>
                 <h2 className="text-[12px] sm:text-xl font-semibold flex flex-row gap-2 mt-3">
                   <TimerIcon className=" text-purple-700" />
@@ -44,7 +63,7 @@ const appointment = ({appointment,expired,canceling}) => {
           </div>
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default appointment
+export default appointment;

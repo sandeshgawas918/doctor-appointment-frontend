@@ -8,10 +8,10 @@ import { useParams } from "next/navigation"
 const page = () => {
   return (
     <div className=" grid sm:grid-cols-4">
-      <div className=" grid sm:col-span-3">
+      <div className="  sm:col-span-3">
         <DoctorDetails />
       </div>
-      <div className=" grid sm:col-span-1">
+      <div className=" sm:block md:hidden lg:block sm:col-span-1">
         <DoctorSuggestion />
       </div>
     </div>

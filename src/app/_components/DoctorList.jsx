@@ -7,10 +7,10 @@ const DoctorList = ({ doctors }) => {
       <h1 className=" text-2xl sm:text-3xl font-semibold flex items-center justify-center mt-2 p-5">
         Our Popular Doctors
       </h1>
-      <section className=" grid sm:grid-cols-4 gap-3">
+      <section className=" grid sm:grid-cols-3 md:grid-cols-4 md:gap-3 sm:gap-0">
         {doctors.length > 0
           ? doctors.map((doc, index) => (
-              <div key={index} className=" border-2 rounded-lg p-3 mx-5">
+              <div key={index} className=" border-2 rounded-lg p-3 md:mx-5 sm:m-1">
                 <Image
                   src={doc.attributes.Image.data.attributes.url}
                   width={100}

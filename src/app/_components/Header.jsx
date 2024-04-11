@@ -54,7 +54,7 @@ const Header = () => {
           </Link>
           <div className=" flex flex-row gap-7 ">
             {NavLink.map((item, index) => (
-              <Link href={`/${item.link}`}>
+              <Link href={`/${item.link}`} key={index}>
                 <li className="hover:scale-110 transition-all ease-in-out hover:text-purple-600 hidden lg:block">
                   {item.name}
                 </li>
@@ -66,7 +66,8 @@ const Header = () => {
           {user ? (
             <div>
               <DropdownMenu>
-                <DropdownMenuTrigger><Image
+                <DropdownMenuTrigger>
+                <Image
                 className=" rounded-full"
                 src={user.picture}
                 height={50}

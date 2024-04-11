@@ -21,15 +21,17 @@ const getDoctors=()=>{
         {doctors.length > 0
           ? doctors.map((doc, index) => (
               <Link href={`/details/${doc.id}`} key={index} className=" border-2 rounded-lg flex flex-row items-center p-3 gap-3 my-3">
+                <div className=''>
                 <Image
                   src={doc.attributes.Image.data.attributes.url}
                   width={100}
                   height={100}
                   alt="doc"
-                  className=" w-[90px] object-cover h-[90px] rounded-full"
+                  className=" w-[90px] object-cover h-[70px] rounded-full"
                 />
+                </div>
                 <div className=" flex  items-baseline flex-col mt-1">
-                  <p className="bg-blue-100 rounded-full text-[9px] px-3 p-1 text-primary">
+                  <p className="bg-blue-100 rounded-full  text-[9px] px-3 p-1 text-primary">
                     {doc.attributes.categories.data[0].attributes.Name}
                   </p>
                   <p className="text-[11px] p-1 font-bold">
