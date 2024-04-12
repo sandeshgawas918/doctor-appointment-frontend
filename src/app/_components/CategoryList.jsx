@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CategoryList = ({ categories }) => {
   return (
-    <div className=" text-center flex gap-3 flex-col items-center justify-center">
+    <div className=" text-center flex gap-3 flex-col items-center justify-center" id="explore">
       <h1 className=" text-center sm:text-4xl font-bold text-2xl">
         Search Doctor by Category
       </h1>

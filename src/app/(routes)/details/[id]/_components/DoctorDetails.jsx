@@ -1,3 +1,5 @@
+"use client"
+
 import GlobalAPI from "@/app/utility/GlobalAPI";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +14,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import BookAppointment from "./BookAppointment";
 
 const DoctorDetails = () => {
+
   const socialMediaList = [
     {
       id: 1,
@@ -61,7 +64,7 @@ const DoctorDetails = () => {
           <div className=" flex sm:flex-row flex-col  p-5 m-5 border rounded-md shadow-sm">
             <div>
               <Image
-                src={doctor?.attributes?.Image.data.attributes.url}
+                src={doctor?.attributes?.Image?.data?.attributes?.url}
                 width={200}
                 height={200}
                 alt="img"

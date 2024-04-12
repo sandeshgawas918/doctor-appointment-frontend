@@ -80,8 +80,8 @@ const BookAppointment = ({ doctor }) => {
   return (
     <div>
       <Dialog className="">
-        <DialogTrigger>
-          <Button className=" mt-2">Book Appointment</Button>
+        <DialogTrigger className=" bg-primary text-white p-2 px-3 rounded-lg">
+          Book Appointment
         </DialogTrigger>
         <DialogContent className="">
           <DialogHeader className="">

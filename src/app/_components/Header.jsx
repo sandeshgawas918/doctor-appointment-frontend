@@ -29,17 +29,17 @@ const Header = () => {
     {
       id: 2,
       name: "Explore",
-      link: "/",
+      link: "#explore",
     },
     {
       id: 3,
       name: "Contact Us",
-      link: "/",
+      link: "#footer",
     },
     {
       id: 4,
       name: "Categories",
-      link: "/",
+      link: "category/Dentist",
     },
   ];
 

@@ -20,7 +20,7 @@ const CategoryDoctor = () => {
   };
 
   return (
-    <div>
+    <div id="category">
       {
         doctors && <DoctorList doctors={doctors}/>
       }
