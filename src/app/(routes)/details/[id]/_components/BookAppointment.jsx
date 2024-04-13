@@ -9,7 +9,7 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import GlobalAPI from "@/app/utility/GlobalAPI";
@@ -54,22 +54,26 @@ const BookAppointment = ({ doctor }) => {
     settimeSlot(timeList); // Assuming settimeSlot is a defined function
   };
 
-
   const saveBooking = () => {
     const data = {
       data: {
-        "UserName": user.given_name  + " " + user.family_name,
-        "Email": user.email,
-        "Date": date,
-        "Time": time,
-        "doctor": doctor.id,
-        "Notes": "test notes",
+        UserName: user.given_name + " " + user.family_name,
+        Email: user.email,
+        Date: date,
+        Time: time,
+        doctor: doctor.id,
+        Notes: "test notes",
       },
     };
 
-
     GlobalAPI.bookAppointment(data).then((res) => {
-      toast("Appointment successfully created")
+      console.log(res);
+      toast("Appointment successfully created.");
+      // if (res){
+      //   GlobalAPI.sendEmail(data).then((res) => {
+      //     console.log(res);
+      //   });
+      // }
     });
   };
 
@@ -137,7 +141,12 @@ const BookAppointment = ({ doctor }) => {
               </Button>
             </DialogClose>
             <div>
-              <Button type="button" onClick={()=>{saveBooking()}}>
+              <Button
+                type="button"
+                onClick={() => {
+                  saveBooking();
+                }}
+              >
                 Submit
               </Button>
             </div>

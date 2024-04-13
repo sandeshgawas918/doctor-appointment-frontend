@@ -69,7 +69,7 @@ const Header = () => {
                 <DropdownMenuTrigger>
                 <Image
                 className=" rounded-full"
-                src={user.picture}
+                src={user?.picture || '/user.webp'}
                 height={50}
                 width={50}
                 alt="pic"

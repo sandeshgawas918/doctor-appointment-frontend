@@ -9,9 +9,9 @@ const appointment = ({ appointment, expired, canceling }) => {
   const { user } = useKindeBrowserClient();
   const [userBookingList, setuserBookingList] = useState([]);
 
- useEffect(() => {
-    filterBooking()
-  }, [appointment,user]);
+  useEffect(() => {
+    filterBooking();
+  }, [appointment, user]);
 
   const filterBooking = () => {
     let result = appointment?.filter((item) => {
