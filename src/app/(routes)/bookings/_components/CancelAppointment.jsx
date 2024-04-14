@@ -11,6 +11,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { DeleteIcon } from "lucide-react";
 
 
 const CancelAppointment = ({id,canceling}) => {
@@ -18,7 +19,7 @@ const CancelAppointment = ({id,canceling}) => {
   return (
     <div>
       <AlertDialog>
-        <AlertDialogTrigger><Button>Cancel Appointment</Button></AlertDialogTrigger>
+        <AlertDialogTrigger className=" bg-primary text-white px-3 p-1 rounded-full text-[9px] sm:text-[12px] flex justify-center items-center hover:bg-red-600"> <DeleteIcon className=" px-1"/> Cancel Appointment</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
