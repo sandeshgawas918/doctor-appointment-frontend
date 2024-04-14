@@ -10,8 +10,8 @@ export async function POST(req) {
     const data = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
       to: [response.data.Email],
-      subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }),
+      subject: 'SG Hospitals - Verification mail',
+      react: EmailTemplate(),
     });
 
     return Response.json(data);

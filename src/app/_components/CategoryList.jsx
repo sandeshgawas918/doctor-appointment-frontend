@@ -20,7 +20,7 @@ const CategoryList = ({ categories }) => {
               <Link
                 href={`/category/${category.attributes.Name}`}
                 key={index}
-                className=" flex flex-col gap-2 items-center justify-center bg-blue-50 p-5 m-5 rounded-lg"
+                className=" flex flex-col gap-2 items-center justify-center bg-blue-50 p-5 m-5 rounded-lg hover:shadow-md hover:scale-110 ease-in-out transition-all"
               >
                 <Image
                   src={category.attributes.Icon.data.attributes.url}

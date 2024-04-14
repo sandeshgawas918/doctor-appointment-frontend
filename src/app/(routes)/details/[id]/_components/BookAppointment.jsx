@@ -71,6 +71,7 @@ const BookAppointment = ({ doctor }) => {
       toast("Appointment successfully created.");
       // if (res){
       //   GlobalAPI.sendEmail(data).then((res) => {
+      //     toast("Appointment successfully created. Verification email has been sent on your mail");
       //     console.log(res);
       //   });
       // }
