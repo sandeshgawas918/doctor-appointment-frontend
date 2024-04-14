@@ -32,7 +32,7 @@ const CategoryList = ({ categories }) => {
                 <p>{category.attributes.Name}</p>
               </Link>
             ))
-          : [1, 2, 3, 4].map((item, index) => (
+          : [1, 2, 3, 4].map((ite, index) => (
               <div
                 className="bg-slate-200 h-[100px] w-[100px] rounded-lg animate-pulse flex flex-col items-center justify-center p-7 m-5"
                 key={index}
