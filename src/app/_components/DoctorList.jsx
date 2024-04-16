@@ -4,7 +4,7 @@ import Link from "next/link";
 const DoctorList = ({ doctors }) => {
   return (
     <div>
-      <h1 className=" text-2xl sm:text-3xl font-semibold flex items-center justify-center mt-2 p-5">
+      <h1 className=" text-2xl sm:text-3xl font-semibold flex items-center justify-center mt-2 p-5 md:mx-20">
         Our Popular Doctors
       </h1>
       <section className=" grid sm:grid-cols-3 md:grid-cols-4 md:gap-3 sm:gap-0">

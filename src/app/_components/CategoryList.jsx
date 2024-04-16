@@ -4,7 +4,7 @@ import Link from "next/link";
 const CategoryList = ({ categories }) => {
   return (
     <div
-      className=" text-center flex gap-3 flex-col items-center justify-center"
+      className=" text-center flex gap-3 flex-col items-center justify-center md:mx-20"
       id="explore"
     >
       <h1 className=" text-center sm:text-4xl font-bold text-2xl">

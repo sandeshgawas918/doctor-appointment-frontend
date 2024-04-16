@@ -35,7 +35,7 @@ const BookingPage = () => {
     }
 
     return (
-        <div className='p-3 mt-3'>
+        <div className='p-3 mt-3 md:mx-20'>
             <h1 className=' text-3xl font-bold'>My Bookings</h1>
             <Tabs defaultValue="upcoming" className="w-full mt-5">
                 <TabsList className=" w-full justify-start">

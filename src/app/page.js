@@ -29,10 +29,10 @@ const getCategories=()=>{
   })
 }
   return (
-    <div>
+    <div className=" md:mx-20 mb-7">
       <Hero/>
-      {categories && <CategoryList categories={categories}/>}
-      {doctors && <DoctorList doctors={doctors}/>}
+      {categories && <CategoryList categories={categories} />}
+      {doctors && <DoctorList doctors={doctors} />}
     </div>
   )
 }

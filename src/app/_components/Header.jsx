@@ -18,8 +18,13 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import {LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+
+  const path=usePathname()
+
   const NavLink = [
     {
       id: 1,
@@ -46,23 +51,25 @@ const Header = () => {
   const { user } = useKindeBrowserClient();
   return (
     <div>
-      <nav className=" flex w-full flex-row justify-between items-center sm:gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer">
+      {/* <pre>{JSON.stringify(path)}</pre> */}
+      <nav className={` ${path=='/Admin' ? "hidden" : '' } " flex w-full flex-row justify-between items-center sm:gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer md:mx-20"`}>
         <div className=" flex items-center gap-9">
-          <Link href="/" className=" w-[100px]">
+          <Link href="/" className=" w-[150px]">
             {" "}
-            <Image src="/logo.svg" width={190} height={50} alt="logo" />
+            <Image src="/logo.svg" width={200} height={90} alt="logo" />
           </Link>
           <div className=" flex flex-row gap-7 ">
             {NavLink.map((item, index) => (
               <Link href={`/${item.link}`} key={index}>
-                <li className="hover:scale-110 transition-all ease-in-out hover:text-purple-600 hidden lg:block">
+                <li className={`${path=='/Admin'? 'hidden' : "hover:scale-110 transition-all ease-in-out hover:text-purple-600 hidden lg:block" }`}>
                   {item.name}
                 </li>
               </Link>
             ))}
           </div>
         </div>
-        <div className=" flex float-end">
+        <div className={`${path=='/Admin'?'hidden':" flex float-end gap-2"}`}>
+          <Link href='/AdminLogin' className={`${user ? 'hidden' : 'bg-green-600 p-1 px-3 rounded-md text-white hidden sm:block'} `}>Admin</Link>
           {user ? (
             <div>
               <DropdownMenu>

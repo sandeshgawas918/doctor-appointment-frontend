@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className=" md:mx-20">
+        <main className="">
           <Header />
           {children}
           <Toaster />

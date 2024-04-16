@@ -19,6 +19,7 @@ const BookAppointment = ({ doctor }) => {
   const [date, setDate] = useState(new Date());
   const [timeSlot, settimeSlot] = useState();
   const [time, settime] = useState();
+  const [notes, setnotes] = useState('')
 
   const { user } = useKindeBrowserClient();
 
@@ -62,7 +63,7 @@ const BookAppointment = ({ doctor }) => {
         Date: date,
         Time: time,
         doctor: doctor.id,
-        Notes: "test notes",
+        Notes: notes,
       },
     };
 
@@ -123,9 +124,10 @@ const BookAppointment = ({ doctor }) => {
           </DialogHeader>
           <div className=" mx-3">
             <textarea
+            onChange={(e)=>{setnotes(e.target.value)}}
               name=""
               id=""
-              //   value={notes}
+                value={notes}
               placeholder="Add notes here..."
               cols="30"
               rows="2"
