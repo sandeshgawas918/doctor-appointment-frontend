@@ -24,7 +24,7 @@ const AdminLoginPage = () => {
 
   return (
     <div>
-      <div className=" flex flex-col items-center justify-center mt-9">
+      <div className=" flex flex-col items-center justify-center my-10">
         <section className="border shadow-lg rounded-xl">
           <div className=" bg-primary rounded-t-xl">
             <h2 className="text-2xl font-bold  text-center p-3 text-white">
