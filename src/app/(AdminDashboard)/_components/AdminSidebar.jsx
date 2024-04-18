@@ -46,12 +46,12 @@ const AdminSidebar = () => {
 
                 <ul className="mt-2 space-y-1 px-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/AddDoctor"
                       className="block rounded-lg px-4 py-2 text font-medium text-gray-200"
                     >
                       Doctors
-                    </a>
+                    </Link>
                   </li>
 
                   <li>

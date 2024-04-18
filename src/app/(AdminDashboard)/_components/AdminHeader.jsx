@@ -10,6 +10,7 @@ import React from "react";
 const AdminHeader = ({ appointments, docCount, categotyCount }) => {
   return (
     <div>
+      {/* <h1 className=" mt-9 text-2xl font-semibold">Overview</h1> */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
         <div className="h-40 border shadow-lg flex flex-col justify-center items-center bg-white">
           <CalendarRange />

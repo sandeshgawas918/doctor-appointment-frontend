@@ -6,25 +6,21 @@ import { toast } from "sonner";
 const AppointmentList = ({ appointments, deleteAppt }) => {
   // const [apptCount, setapptCount] = useState();
 
-
   return (
     <div>
-      <div className="overflow-x-auto mt-9 shadow-lg bg-white">
+      <h1 className=" mt-9 text-2xl font-semibold">Appointment List</h1>
+      <div className="overflow-x-auto shadow-lg bg-white mt-3">
         <table className="min-w-full divide-y-2 divide-gray-200  text-sm">
           <thead className=" bg-gray-400 text-white">
             <tr>
-              <th className="whitespace-nowrap px-4 py-2 font-medium">
-                Name
-              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium">Name</th>
               <th className="whitespace-nowrap px-4 py-2 font-medium">
                 Email Id
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium">
                 Appt Schedule
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium">
-                Notes
-              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium">Notes</th>
               <th className="px-4 py-2"></th>
             </tr>
           </thead>

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
 import React from "react";
 
@@ -29,8 +30,9 @@ const Hero = () => {
                 appointment booking app.
               </p>
 
-              
+              <LoginLink>
               <Button className="mt-8  px-12 py-5 text-sm font-medium text-white transition focus:outline-none ">Get Started Today</Button>
+            </LoginLink>
             </div>
           </div>
         </div>
