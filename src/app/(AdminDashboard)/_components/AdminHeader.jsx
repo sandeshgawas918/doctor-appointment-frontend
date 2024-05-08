@@ -1,7 +1,10 @@
 import {
   BriefcaseMedical,
+  BriefcaseMedicalIcon,
+  CalendarOff,
   CalendarRange,
   GraduationCapIcon,
+  HospitalIcon,
   ShieldAlert,
   ShieldXIcon,
 } from "lucide-react";
@@ -19,30 +22,36 @@ const AdminHeader = ({ appointments, docCount, categotyCount }) => {
           </h3>
           <h5 className=" text-black text-4xl font-semibold">
             {appointments &&
-              appointments.filter((item) => new Date(item.attributes.Date) > new Date()).length}
+              appointments.filter(
+                (item) => new Date(item.attributes.Date) > new Date()
+              ).length}
           </h5>
         </div>
         <div className="h-40 border shadow-lg flex flex-col justify-center items-center bg-white">
-          <ShieldXIcon />
+          <CalendarOff />
           <h3 className=" text-black text-xl mt-3 text-center px-3">
             Expired Appointments
           </h3>
-          <h5 className=" text-black text-4xl font-semibold">{appointments &&
-              appointments.filter((item) => new Date(item.attributes.Date) < new Date()).length}</h5>
-        </div>
-        <div className="h-40 border shadow-lg flex flex-col justify-center items-center bg-white">
-          <GraduationCapIcon />
-          <h3 className=" text-black text-xl mt-3">Total Doctors</h3>
           <h5 className=" text-black text-4xl font-semibold">
-            {
-              docCount && docCount.length
-            }
+            {appointments &&
+              appointments.filter(
+                (item) => new Date(item.attributes.Date) < new Date()
+              ).length}
           </h5>
         </div>
         <div className="h-40 border shadow-lg flex flex-col justify-center items-center bg-white">
-          <BriefcaseMedical />
+          <BriefcaseMedicalIcon />
+          <h3 className=" text-black text-xl mt-3">Total Doctors</h3>
+          <h5 className=" text-black text-4xl font-semibold">
+            {docCount && docCount.length}
+          </h5>
+        </div>
+        <div className="h-40 border shadow-lg flex flex-col justify-center items-center bg-white">
+          <HospitalIcon />
           <h3 className=" text-black text-xl mt-3">Total Categories</h3>
-          <h5 className=" text-black text-4xl font-semibold">{categotyCount && categotyCount.length}</h5>
+          <h5 className=" text-black text-4xl font-semibold">
+            {categotyCount && categotyCount.length}
+          </h5>
         </div>
       </div>
     </div>

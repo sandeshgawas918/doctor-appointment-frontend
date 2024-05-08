@@ -51,8 +51,8 @@ const Header = () => {
   const { user } = useKindeBrowserClient();
   return (
     <div>
-      {/* <pre>{JSON.stringify(path)}</pre> */}
-      <nav className={` ${path=='/Admin' ? "hidden" : '' } " flex w-full flex-row justify-between items-center sm:gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer md:mx-20"`}>
+      {/* <pre>{JSON.stringify(user)}</pre> */}
+      <nav className={` ${path.includes('/Admin') && path !='/AdminLogin' ? "hidden" : '' } " flex w-full flex-row justify-between items-center sm:gap-20 p-5 sm:px-20 shadow-sm transition-all ease-in-out cursor-pointer md:mx-20"`}>
         <div className=" flex items-center gap-9">
           <Link href="/" className=" w-[150px]">
             {" "}
@@ -61,14 +61,14 @@ const Header = () => {
           <div className=" flex flex-row gap-7 ">
             {NavLink.map((item, index) => (
               <Link href={`/${item.link}`} key={index}>
-                <li className={`${path=='/Admin'? 'hidden' : "hover:scale-110 transition-all ease-in-out hover:text-purple-600 hidden lg:block" }`}>
+                <li className={`${path.includes('/Admin') && path !='/AdminLogin' ? 'hidden' : "hover:scale-110 transition-all ease-in-out hover:text-purple-600 hidden lg:block" }`}>
                   {item.name}
                 </li>
               </Link>
             ))}
           </div>
         </div>
-        <div className={`${path=='/Admin'?'hidden':" flex float-end gap-2"}`}>
+        <div className={`${path.includes('/Admin') ?  'hidden' : 'flex float-end gap-2'}`}> 
           <Link href='/AdminLogin' className={`${user ? 'hidden' : 'bg-green-600 p-1 px-3 rounded-md text-white hidden sm:block'} `}>Admin</Link>
           {user ? (
             <div>

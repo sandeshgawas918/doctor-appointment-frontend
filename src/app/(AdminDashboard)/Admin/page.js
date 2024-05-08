@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import AdminHeader from '../_components/AdminHeader'
 import AppointmentList from '../_components/AppointmentList'
 import GlobalAPI from '@/app/utility/GlobalAPI'
@@ -11,18 +11,19 @@ const AdminDashboard = () => {
   const [doctorCount, setdoctorCount] = useState()
   const [categotyCount, setcategotyCount] = useState()
 
-  const deleteAppt = (id) => {
+  const deleteAppt = useCallback((id) => {
     GlobalAPI.deleteAppointment(id).then((res) => {
       if (res) {
         toast("Appointment has been deleted...");
+        getCount()
       }
     });
-  };
+  }, []); // Empty dependency array to memoize the function
 
   useEffect(()=>{
     getCount()
-    console.log('adss');
-  },[deleteAppt])
+    console.log('get count function is called...');
+  },[])
 
   const getCount=()=>{
    GlobalAPI.getAppointments().then((res)=>{

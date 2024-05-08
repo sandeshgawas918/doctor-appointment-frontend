@@ -8,12 +8,12 @@ const AdminSidebar = () => {
     <div>
       <div className="flex h-screen flex-col justify-between border-e bg-[#1C2434] ">
         <div className="px-4 py-6">
-          <div className=" flex flex-col items-center justify-center mt-5">
+          <Link href='/' className=" flex flex-col items-center justify-center mt-5">
             <Image src="/logo2.svg" width={170} height={100} alt="logo" />
-          </div>
+          </Link>
           <ul className="mt-9 space-y-1 ">
             <Link
-              href="#"
+              href="/Admin"
               className="flex flex-row gap-3 text-xl rounded-lg px-4 py-2 font-medium text-gray-200"
             >
               <LayoutGrid />
@@ -47,7 +47,7 @@ const AdminSidebar = () => {
                 <ul className="mt-2 space-y-1 px-4">
                   <li>
                     <Link
-                      href="/AddDoctor"
+                      href="/Admin/AddDoctor"
                       className="block rounded-lg px-4 py-2 text font-medium text-gray-200"
                     >
                       Doctors
@@ -55,12 +55,12 @@ const AdminSidebar = () => {
                   </li>
 
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/Admin/AddCategory"
                       className="block rounded-lg px-4 py-2 text font-medium text-gray-200"
                     >
                       Categories
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </details>
