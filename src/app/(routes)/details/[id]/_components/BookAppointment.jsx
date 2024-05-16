@@ -14,12 +14,13 @@ import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import GlobalAPI from "@/app/utility/GlobalAPI";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import moment from "moment";
 
 const BookAppointment = ({ doctor }) => {
   const [date, setDate] = useState(new Date());
   const [timeSlot, settimeSlot] = useState();
   const [time, settime] = useState();
-  const [notes, setnotes] = useState('')
+  const [notes, setnotes] = useState("");
 
   const { user } = useKindeBrowserClient();
 
@@ -55,7 +56,7 @@ const BookAppointment = ({ doctor }) => {
     settimeSlot(timeList); // Assuming settimeSlot is a defined function
   };
 
-  const saveBooking = () => {
+  const saveBooking = async () => {
     const data = {
       data: {
         UserName: user.given_name + " " + user.family_name,
@@ -67,17 +68,41 @@ const BookAppointment = ({ doctor }) => {
       },
     };
 
-    GlobalAPI.bookAppointment(data).then((res) => {
-      console.log(res);
-      toast("Appointment successfully created.");
-      // if (res){
-      //   GlobalAPI.sendEmail(data).then((res) => {
-      //     toast("Appointment successfully created. Verification email has been sent on your mail");
-      //     console.log(res);
-      //   });
-      // }
-    });
+    let resAppt=await GlobalAPI.getAppointments()
+    let appt=resAppt?.data?.data
+
+    let slotBooking=false
+
+    for(let item of appt){
+      if (moment(item?.attributes?.Date).format("DD-MMM-YYYY") === moment(data.data.Date).format("DD-MMM-YYYY") &&
+      data.data.Time === item?.attributes?.Time)
+      {
+        slotBooking=true
+        break
+      }
+    }
+
+    if(slotBooking){
+      setnotes('')
+      toast('Already booked! Please select different slot.')
+    }
+    else{
+      let res=await GlobalAPI.bookAppointment(data)
+      setnotes('')
+      toast('Appointment has been created successfully')
+      console.log(data);
+    }
   };
+
+  // GlobalAPI.bookAppointment(data).then((res) => {
+  //   console.log(res);
+  // if (res){
+  //   GlobalAPI.sendEmail(data).then((res) => {
+  //     toast("Appointment successfully created. Verification email has been sent on your mail");
+  //     console.log(res);
+  //   });
+  // }
+  // });
 
   const isPastDay = (day) => {
     return day < new Date();
@@ -124,10 +149,12 @@ const BookAppointment = ({ doctor }) => {
           </DialogHeader>
           <div className=" mx-3">
             <textarea
-            onChange={(e)=>{setnotes(e.target.value)}}
+              onChange={(e) => {
+                setnotes(e.target.value);
+              }}
               name=""
               id=""
-                value={notes}
+              value={notes}
               placeholder="Add notes here..."
               cols="30"
               rows="2"
@@ -138,7 +165,7 @@ const BookAppointment = ({ doctor }) => {
             <DialogClose asChild>
               <Button
                 type="button"
-                className=" bg-black hover:bg-white hover:text-black hover:outline-black border-2-black"
+                className=" bg-red-600 hover:bg-red-700 hover:outline-black border-2-black"
               >
                 Close
               </Button>
