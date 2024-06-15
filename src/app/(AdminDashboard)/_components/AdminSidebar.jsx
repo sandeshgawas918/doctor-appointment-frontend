@@ -66,13 +66,13 @@ const AdminSidebar = () => {
               </details>
             </li>
 
-            <Link
+            {/* <Link
               href="#"
               className="flex flex-row gap-3 text-xl rounded-lg px-4 py-2 font-medium text-gray-200"
             >
               <AreaChart />
               Analytics
-            </Link>
+            </Link> */}
           </ul>
         </div>
 

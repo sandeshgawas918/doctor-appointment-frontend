@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import GlobalAPI from "@/app/utility/GlobalAPI";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,6 @@ import React, { useEffect, useState } from "react";
 import BookAppointment from "./BookAppointment";
 
 const DoctorDetails = () => {
-
   const socialMediaList = [
     {
       id: 1,
@@ -58,9 +57,9 @@ const DoctorDetails = () => {
 
   return (
     <div>
+      <pre>{console.log(doctor)}</pre>
       <section className=" overflow-x-hidden">
-
-        {doctor && (
+        {doctor?.attributes ? (
           <div className=" flex sm:flex-row flex-col  p-5 m-5 border rounded-md shadow-sm">
             <div>
               <Image
@@ -103,12 +102,18 @@ const DoctorDetails = () => {
               </h1>
             </div>
           </div>
+        ) : (
+          <div className="bg-slate-200 mt-10 h-[300px] w-auto rounded-lg animate-pulse flex flex-col items-center justify-center mx-8"></div>
         )}
 
-        <div className=" m-5 mt-10 border rounded-md shadow-sm p-5">
-          <h1 className=" text-2xl font-semibold">About</h1>
-          <p className="mt-2 text-gray-600">{doctor?.attributes?.About}</p>
-        </div>
+        {doctor?.attributes ? (
+          <div className=" m-5 mt-10 border rounded-md shadow-sm p-5">
+            <h1 className=" text-2xl font-semibold">About</h1>
+            <p className="mt-2 text-gray-600">{doctor?.attributes?.About}</p>
+          </div>
+        ) : (
+          <div className="bg-slate-200 h-[130px] mt-10 w-auto rounded-lg animate-pulse flex flex-col items-center justify-center mx-8"></div>
+        )}
       </section>
     </div>
   );
